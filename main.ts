@@ -238,7 +238,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile21`, function (sprite2,
         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
         `)
     Jen.setStayInScreen(true)
-    Jen.setPosition(90, 100)
+    Jen.setPosition(104, 65)
     Boss = sprites.create(img`
         ........................
         ........................
@@ -266,7 +266,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile21`, function (sprite2,
         ........................
         `, SpriteKind.Player)
     Boss.setStayInScreen(true)
-    Boss.setPosition(100, 60)
+    Boss.setPosition(49, 65)
     story.startCutscene(function () {
         story.spriteSayText(Jen, "I'm here for my shift.")
         pause(200)
@@ -290,6 +290,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile21`, function (sprite2,
         pause(100)
         story.cancelCurrentCutscene()
         Boss.destroy()
+        // takes you out of cutcene.
+        tiles.setCurrentTilemap(tilemap`level1`)
     })
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
