@@ -74,9 +74,6 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
-controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    game.showLongText(VERYLONGTEXT, DialogLayout.Center)
-})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile24`, function (sprite, location) {
     Jen.setStayInScreen(true)
     story.startCutscene(function () {
@@ -531,11 +528,11 @@ let Boss: Sprite = null
 let SECRETTEXT = ""
 let Jen: Sprite = null
 let Left = false
-let VERYLONGTEXT = ""
 let Reset = false
 // No more Jen army
 Reset = true
-VERYLONGTEXT = "This is the story-" + "Of a argumentative girl-" + "Whose quest for an ingrediant-" + "Is about to go off the rails!-" + "Press A to play, if you dare."
+let VERYLONGTEXT = "This is the story-" + "Of a argumentative girl-" + "Whose quest for an ingrediant-" + "Is about to go off the rails!-" + "Press A to play, if you dare."
+game.showLongText(VERYLONGTEXT, DialogLayout.Center)
 pause(5000)
 Left = false
 game.onUpdateInterval(500, function () {
