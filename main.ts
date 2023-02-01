@@ -88,27 +88,30 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile24`, function (sprite, 
     })
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    tiles.setCurrentTilemap(tilemap`level1`)
-    Jen = sprites.create(img`
-        . . . . . . f f f f . . . . . . 
-        . . . . f f f 2 2 f f f . . . . 
-        . . . f f f 2 2 2 2 f f f . . . 
-        . . f f f e e e e e e f f f . . 
-        . . f f e 2 2 2 2 2 2 e e f . . 
-        . . f e 2 f f f f f f 2 e f . . 
-        . . f f f f e e e e f f f f . . 
-        . f f e f b f 4 4 f b f e f f . 
-        . f e e 4 1 f d d f 1 4 e e f . 
-        . . f e e d d d d d d e e f . . 
-        . . . f e e 4 4 4 4 e e f . . . 
-        . . e 4 f 2 2 2 2 2 2 f 4 e . . 
-        . . 4 d f 2 2 2 2 2 2 f d 4 . . 
-        . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
-        . . . . . f f f f f f . . . . . 
-        . . . . . f f . . f f . . . . . 
-        `, SpriteKind.Player)
-    controller.player1.moveSprite(Jen)
-    scene.cameraFollowSprite(Jen)
+    while (Reset == true) {
+        tiles.setCurrentTilemap(tilemap`level1`)
+        Jen = sprites.create(img`
+            . . . . . . f f f f . . . . . . 
+            . . . . f f f 2 2 f f f . . . . 
+            . . . f f f 2 2 2 2 f f f . . . 
+            . . f f f e e e e e e f f f . . 
+            . . f f e 2 2 2 2 2 2 e e f . . 
+            . . f e 2 f f f f f f 2 e f . . 
+            . . f f f f e e e e f f f f . . 
+            . f f e f b f 4 4 f b f e f f . 
+            . f e e 4 1 f d d f 1 4 e e f . 
+            . . f e e d d d d d d e e f . . 
+            . . . f e e 4 4 4 4 e e f . . . 
+            . . e 4 f 2 2 2 2 2 2 f 4 e . . 
+            . . 4 d f 2 2 2 2 2 2 f d 4 . . 
+            . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
+            . . . . . f f f f f f . . . . . 
+            . . . . . f f . . f f . . . . . 
+            `, SpriteKind.Player)
+        controller.player1.moveSprite(Jen)
+        scene.cameraFollowSprite(Jen)
+        Reset = false
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile21`, function (sprite2, location2) {
     tiles.setCurrentTilemap(tilemap`level2`)
@@ -527,6 +530,9 @@ let SECRETTEXT = ""
 let Jen: Sprite = null
 let Left = false
 let VERYLONGTEXT = ""
+let Reset = false
+// No more Jen army
+Reset = true
 VERYLONGTEXT = "This is the story-" + "Of a argumentative girl-" + "Whose quest for an ingrediant-" + "Is about to go off the rails!-" + "Press A to play, if you dare."
 pause(5000)
 Left = false
