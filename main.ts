@@ -76,13 +76,15 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile24`, function (sprite, location) {
     Jen.setStayInScreen(true)
-    story.startCutscene(function () {
-        SECRETTEXT = "Are You Sure-" + "You Want To Leave?"
-        story.showPlayerChoices("Yes", "No")
-        if (story.getLastAnswer() == "Yes") {
-            game.over(true)
-        }
-    })
+    game.showLongText("Are You Sure-" + "You Want To Leave?", DialogLayout.Center)
+    leave = game.askForString("Do you want to leave")
+    if (leave == "yes") {
+        game.gameOver(true)
+    } else {
+        Jen.setPosition(33, 21)
+        // takes you out of cutcene.
+        tiles.setCurrentTilemap(tilemap`level1`)
+    }
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     while (Reset == true) {
@@ -525,7 +527,7 @@ controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
 let Looping = false
 let projectile: Sprite = null
 let Boss: Sprite = null
-let SECRETTEXT = ""
+let leave = ""
 let Jen: Sprite = null
 let Left = false
 let Reset = false
